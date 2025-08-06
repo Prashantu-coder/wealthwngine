@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wealth Engine</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sip_calculator.css">
+    <link rel="stylesheet" href="tools_buy_calculator.css">
+</head>
+<body>
+    <header id="main-header">
+        <h1>Wealth Engine 🚀NEPSE📈</h1>
+        <p class="tagline">💰 From paisa to power — 📈 track it all. 🔥</p>
+    </header>
+    <nav id="main-nav">
+        <button class="tab-btn active" onclick="showTab('dashboard')">Dashboard</button>
+        <button class="tab-btn" onclick="showTab('portfolio')">Portfolio</button>
+        <button class="tab-btn" onclick="showTab('watchlist')">Watchlist</button>
+        <div class="dropdown-nav">
+            <button class="tab-btn" id="toolsTabBtn" onclick="showTab('tools')">Tools</button>
+            <div class="dropdown-content">
+                <a href="#" data-tool="buy">Buy Calculator</a>
+                <a href="#" data-tool="avg">Avg. Calculator</a>
+                <a href="#" data-tool="bonus">Bonus adj. Calculator</a>
+                <a href="#" data-tool="right">Right Adj. Calculator</a>
+                <a href="#" data-tool="dividend">Dividend Calculator</a>
+                <a href="#" data-tool="emi">Emi Calculator</a>
+                <a href="#" data-tool="sip">SIP Calculator</a>
+            </div>
+        </div>
+        <button class="tab-btn" onclick="showTab('investment')">Investment Opportunities</button>
+        <button class="tab-btn" onclick="showTab('news')">News and Update</button>
+        <button class="tab-btn" onclick="showTab('shareinfo')">Share Information</button>
+    </nav>
+
+    <section id="dashboard" class="tab-content" style="display:block;">
+        <h1>Welcome to Wealth Engine</h1>
+        <p>Your journey to financial growth starts here.</p>
+    </section>
+    <section id="portfolio" class="tab-content" style="display:none;">
+        <h2>Portfolio</h2>
+        <p>Track your investments here.</p>
+    </section>
+    <section id="watchlist" class="tab-content" style="display:none;">
+        <h2>Watchlist</h2>
+        <p>Monitor stocks or assets of interest.</p>
+    </section>
+    <section id="tools" class="tab-content" style="display:none;">
+        <h2></h2>
+        <div id="buy-calculator-section" style="display:block;">
+            <div id="calculator-bg-container">
+                <div class="calc-header buy-header" id="buySellHeader">BUY/SELL CALCULATOR</div>
+                <div class="calc-toggle-inner-container" style="display:flex;justify-content:center;margin-bottom:1.5rem;">
+                    <select id="calculatorToggle" class="buy-input" style="max-width:220px;text-align:center;">
+                    <option value="buy">Buy</option>
+                    <option value="sell">Sell</option>
+                </select>
+                </div>
+                <div class="buy-calc-flex">
+                    <div class="buy-calc-inputs">
+                        <label for="buyQuantity" class="buy-label">Quantity</label>
+                        <input type="number" id="buyQuantity" class="buy-input" style="width:100%;margin-bottom:1.2rem;">
+                        <label for="buyPriceInput" class="buy-label">Buy Price</label>
+                        <input type="number" id="buyPriceInput" class="buy-input" style="width:100%;margin-bottom:1.2rem;">
+                    <div style="display:flex;gap:1rem;margin-top:1.2rem;">
+                            <button type="button" class="buy-calc-btn" style="width:100%;" onclick="calculateBuyDetails()">Calculate</button>
+                            <button type="button" class="buy-clear-btn" style="width:100%;" onclick="clearBuyCalculator()">Clear</button>
+                        </div>
+                    </div>
+                    <table class="buy-results-table" style="width:100%;margin-top:0;">
+                        <tr><th>Initial Investment</th><td id="totalAmountCell">-</td></tr>
+                        <tr><th>Broker Commission</th><td id="brokerCommissionCell">-</td></tr>
+                        <tr><th>SEBON Fee</th><td id="sebonFeeCell">-</td></tr>
+                        <tr><th>DP Charge</th><td id="dpChargeCell">-</td></tr>
+                        <tr><th>Total Commission</th><td id="commissionCell">-</td></tr>
+                        <tr><th>Amount Payable</th><td id="totalPayableCell">-</td></tr>
+                        <tr><th>WACC</th><td id="waccCell">-</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="sell-calculator-section" style="display:none;">
+            <div id="calculator-bg-container">
+                <div class="calc-header buy-header" id="buySellHeader">BUY/SELL CALCULATOR</div>
+                <div class="calc-toggle-inner-container" style="display:flex;justify-content:center;margin-bottom:1.5rem;">
+                    <select id="calculatorToggleDummy" class="buy-input" style="max-width:220px;text-align:center;" disabled>
+                        <option value="sell">Sell</option>
+                    </select>
+                </div>
+                <div class="buy-calc-flex">
+                    <div class="buy-calc-inputs">
+                        <label for="sellQuantity" class="buy-label">Quantity</label>
+                        <input type="number" id="sellQuantity" class="buy-input" style="width:100%;margin-bottom:1.2rem;">
+                        <div id="sellWaccWrapper">
+                            <label for="sellWacc" class="buy-label" id="sellWaccLabel">Buy WACC</label>
+                            <input type="number" id="sellWacc" class="buy-input" style="width:100%;margin-bottom:0.5rem;">
+                            <div id="sellWaccNote" style="font-size:0.95rem;color:#185a9d;margin-bottom:0.7rem;">Enter Buy WACC if not auto-filled.</div>
+                        </div>
+                        <label for="sellPriceInput" class="buy-label">Sell Price</label>
+                        <input type="number" id="sellPriceInput" class="buy-input" style="width:100%;margin-bottom:1.2rem;">
+                        <label for="holdingType" class="buy-label">Holding Type</label>
+                        <select id="holdingType" class="buy-input" style="margin-bottom:0.5rem;">
+                        <option value="short_term">Short Term</option>
+                        <option value="long_term">Long Term</option>
+                    </select>
+                        <div id="holdingInfo" class="buy-label" style="font-weight:normal;color:#185a9d;margin-bottom:1.2rem;"></div>
+                    <div style="display:flex;gap:1rem;margin-top:1.2rem;">
+                            <button type="button" class="buy-calc-btn" style="width:100%;" onclick="calculateSellDetails()">Calculate</button>
+                            <button type="button" class="buy-clear-btn" style="width:100%;" onclick="clearSellCalculator()">Clear</button>
+                        </div>
+                    </div>
+                    <table class="buy-results-table" style="width:100%;margin-top:0;">
+                        <tr><th>Initial Selling Amount</th><td id="initialSellingCell">-</td></tr>
+                        <tr><th>Investment</th><td id="investmentCell">-</td></tr>
+                        <tr><th>Broker Commission</th><td id="sellBrokerCommissionCell">-</td></tr>
+                        <tr><th>SEBON Fee</th><td id="sellSebonFeeCell">-</td></tr>
+                        <tr><th>DP Charge</th><td id="sellDpChargeCell">-</td></tr>
+                        <tr><th>Total Commission</th><td id="sellCommissionCell">-</td></tr>
+                        <tr><th>Profit Before Tax</th><td id="profitBeforeTaxCell">-</td></tr>
+                        <tr><th>Capital Gain Tax</th><td id="capitalGainTaxCell">-</td></tr>
+                        <tr><th>Net Profit/Loss</th><td id="netProfitLossCell">-</td></tr>
+                        <tr><th>Net Profit/Loss %</th><td id="netProfitLossPercentCell">-</td></tr>
+                        <tr><th>Amount Receivable</th><td id="amountReceivableCell">-</td></tr>
+                        <tr><th>WACC</th><td id="sellWaccCell">-</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="sip-calculator-section" style="display:none;">
+            <div class="sip-bg-container">
+                <div class="calc-header sip-header">SIP CALCULATOR</div>
+                <div class="sip-calc-flex">
+                    <div class="sip-form-panel">
+                        <label for="sipPeriod" class="sip-label">Investment Period</label>
+                        <select id="sipPeriod" class="sip-select">
+                            <option value="" disabled selected hidden></option>
+                            <option value="monthly">Monthly</option>
+                            <option value="quarterly">Quarterly</option>
+                            <option value="semiannually">Semi-Annually</option>
+                            <option value="annually">Annually</option>
+                        </select>
+                        <div class="sip-period-selected-label"><b id="sipPeriodSelected"></b></div>
+                        <label for="sipAmount" class="sip-label" style="margin-top:1.2rem;">Investment amount</label>
+                        <input type="number" id="sipAmount" class="sip-input" style="width:100%;margin-bottom:1.2rem;">
+                        <label for="sipReturn" class="sip-label">Expected annual return (%)</label>
+                        <input type="number" id="sipReturn" class="sip-input" style="width:100%;margin-bottom:1.2rem;">
+                        <label for="sipYears" class="sip-label">Years</label>
+                        <input type="number" id="sipYears" class="sip-input" style="width:100%;margin-bottom:1.2rem;">
+                        <div class="sip-btn-container" style="display:flex;gap:1rem;margin-top:1.2rem;">
+                            <button type="button" class="sip-calc-btn" onclick="calculateSIP()">Calculate</button>
+                            <button type="button" class="sip-calc-btn" onclick="clearSIPCalculator()">Clear</button>
+                        </div>
+                    </div>
+                    <div class="sip-results-panel">
+                        <div style="font-weight:bold; margin-bottom:0.5rem;">Results:</div>
+                        <table class="sip-results-table">
+                            <tr><th>Total Amount Expected</th><td id="sipTotalExpected"></td></tr>
+                            <tr><th>Total Amount Invested</th><td id="sipTotalInvested"></td></tr>
+                            <tr><th>Total Gain</th><td id="sipTotalGain"></td></tr>
+                            <tr><th>Total Gain%</th><td id="sipTotalGainPercent"></td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="emi-calculator-section" style="display:none;">
+            <div id="emi-bg-container">
+                <div class="calc-header emi-header">EMI CALCULATOR</div>
+                <div class="emi-calc-flex">
+                    <div class="emi-calc-inputs">
+                        <label for="emiLoanAmount" class="emi-label">Loan Amount</label>
+                        <input type="number" id="emiLoanAmount" class="emi-input" style="width:100%;margin-bottom:1.2rem;">
+                        <label for="emiInterestRate" class="emi-label">Interest Rate (%)</label>
+                        <input type="number" id="emiInterestRate" class="emi-input" style="width:100%;margin-bottom:1.2rem;">
+                        <label for="emiTenure" class="emi-label">Loan Tenure</label>
+                        <div style="display:flex;gap:0.7rem;align-items:center;margin-bottom:1.2rem;">
+                            <input type="number" id="emiTenure" class="emi-input" style="width:100%;">
+                            <select id="emiTenureType" class="emi-input" style="width:auto;min-width:90px;">
+                                <option value="months">Months</option>
+                                <option value="years">Years</option>
+                            </select>
+                        </div>
+                        <div class="emi-btn-container" style="display:flex;gap:1rem;margin-top:1.2rem;">
+                            <button type="button" class="emi-calc-btn" onclick="calculateEMI()">Calculate</button>
+                        </div>
+                    </div>
+                    <table class="emi-results-table" style="width:100%;margin-top:0;">
+                        <tr><th>EMI per month</th><td id="emiResult"></td></tr>
+                        <tr><th>Total Payment</th><td id="emiTotalPayment"></td></tr>
+                        <tr><th>Total Interest</th><td id="emiTotalInterest"></td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="bonus-adjustment-calculator-section" style="display:none;">
+            <div id="bonus-bg-container">
+                <div class="bonus-header">Bonus Share Adjustment Calculator</div>
+                <div class="bonus-underline"></div>
+                <div class="bonus-calc-flex">
+                    <div class="bonus-calc-inputs">
+                        <label for="bonusMarketPrice" class="bonus-label">Market Price (Before Book Closure)</label>
+                        <input type="number" id="bonusMarketPrice" class="bonus-input" style="width:100%;margin-bottom:1.2rem;">
+                        <label for="bonusPercent" class="bonus-label">% of Bonus Share</label>
+                        <input type="number" id="bonusPercent" class="bonus-input" style="width:100%;margin-bottom:1.2rem;">
+                        <div style="display:flex;gap:1rem;margin-top:1.2rem;">
+                            <button type="button" class="bonus-calc-btn">Calculate</button>
+                            <button type="button" class="bonus-clear-btn">Clear</button>
+                        </div>
+                    </div>
+                    <table class="bonus-results-table" style="width:100%;margin-top:0;">
+                        <tr><th>Market Price (Before Book Closure)</th><td id="bonusResultMarketPrice">-</td></tr>
+                        <tr><th>% of Bonus Share</th><td id="bonusResultPercent">-</td></tr>
+                        <tr><th><b>Market Price after Adjustment</b></th><td id="bonusResultAdjusted">-</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="right-adjustment-calculator-section" style="display:none;">
+            <div id="right-bg-container">
+                <div class="right-header">Right Share Adjustment Calculator</div>
+                <div class="right-underline"></div>
+                <div class="right-calc-flex">
+                    <div class="right-calc-inputs">
+                        <label for="rightMarketPrice" class="right-label">Market Price (Before Book Closure)</label>
+                        <input type="number" id="rightMarketPrice" class="right-input" style="width:100%;margin-bottom:1.2rem;">
+                        <label for="rightPercent" class="right-label">% of Right Share</label>
+                        <input type="number" id="rightPercent" class="right-input" style="width:100%;margin-bottom:1.2rem;">
+                        <label for="rightSharePrice" class="right-label">Right Share Price</label>
+                        <input type="number" id="rightSharePrice" class="right-input" style="width:100%;margin-bottom:1.2rem;">
+                        <div style="display:flex;gap:1rem;margin-top:1.2rem;">
+                            <button type="button" class="right-calc-btn">Calculate</button>
+                            <button type="button" class="right-clear-btn">Clear</button>
+                        </div>
+                    </div>
+                    <table class="right-results-table" style="width:100%;margin-top:0;">
+                        <tr><th>Market Price (Before Book Closure)</th><td id="rightResultMarketPrice">-</td></tr>
+                        <tr><th>% of Right Share</th><td id="rightResultPercent">-</td></tr>
+                        <tr><th>Right Share Price</th><td id="rightResultSharePrice">-</td></tr>
+                        <tr><th><b>Market Price after Right Adjustment</b></th><td id="rightResultAdjusted">-</td></tr>
+                </table>
+                </div>
+            </div>
+        </div>
+        <div id="dividend-calculator-section" style="display:none;">
+            <div id="dividend-bg-container">
+                <div class="dividend-header">Dividend Calculator</div>
+                <div class="dividend-underline"></div>
+                <div class="dividend-calc-flex">
+                    <div class="dividend-calc-inputs">
+                        <label for="dividendQty" class="dividend-label">Share Quantity</label>
+                        <input type="number" id="dividendQty" class="dividend-input" style="width:100%;margin-bottom:1.2rem;">
+                        <label for="dividendBonus" class="dividend-label">% of Bonus Dividend</label>
+                        <input type="number" id="dividendBonus" class="dividend-input" style="width:100%;margin-bottom:1.2rem;">
+                        <label for="dividendCash" class="dividend-label">% of Cash Dividend</label>
+                        <input type="number" id="dividendCash" class="dividend-input" style="width:100%;margin-bottom:1.2rem;">
+                        <label for="dividendPaidup" class="dividend-label">Paid-up Value per Share</label>
+                        <select id="dividendPaidup" class="dividend-input" style="width:100%;margin-bottom:1.2rem;">
+                            <option value="10">10</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                        <div class="dividend-btn-container" style="display:flex;gap:1rem;margin-top:1.2rem;">
+                            <button type="button" class="dividend-calc-btn" onclick="calculateDividend()">Calculate</button>
+                            <button type="button" class="dividend-clear-btn" onclick="clearDividendCalculator()">Clear</button>
+                        </div>
+                    </div>
+                    <div class="dividend-results-card">
+                        <table class="dividend-results-table" style="width:100%;margin-top:0;">
+                            <tr><th>Cash Amount</th><td id="dividendResultCash">-</td></tr>
+                            <tr><th>Bonus Share Tax (5%)</th><td id="dividendResultBonusTax">-</td></tr>
+                            <tr><th>Cash Amount Tax (5%)</th><td id="dividendResultCashTax">-</td></tr>
+                            <tr><th>Total Payable Tax</th><td id="dividendResultTotalTax">-</td></tr>
+                            <tr><th>Receivable Bonus Quantity</th><td id="dividendResultBonusQty">-</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Awaiting further instructions for calculator content -->
+    </section>
+    <section id="investment" class="tab-content" style="display:none;">
+        <h2>Investment Opportunities</h2>
+        <p>Explore new investment options.</p>
+    </section>
+    <section id="news" class="tab-content" style="display:none;">
+        <h2>News and Update</h2>
+        <p>Stay updated with the latest financial news.</p>
+    </section>
+    <section id="shareinfo" class="tab-content" style="display:none;">
+        <h2>Share Information</h2>
+        <p>Get detailed information about shares.</p>
+    </section>
+    <script src="script.js"></script>
+    <script src="tools_buy_calculator.js"></script>
+    <script src="sip_calculator.js"></script>
+    <script src="emi-calculator.js"></script>
+    <script src="bonus-adjustment.js"></script>
+    <script src="right-adjustment.js"></script>
+    <script src="dividend-calculator.js"></script>
+    <link rel="stylesheet" href="emi.css">
+    <link rel="stylesheet" href="bonus-adjustment.css">
+    <link rel="stylesheet" href="right-adjustment.css">
+    <link rel="stylesheet" href="dividend-calculator.css">
+    <footer id="main-footer">
+        📊 Built for thinkers. 📈 Made for winners.
+    </footer>
+</body>
+</html> 

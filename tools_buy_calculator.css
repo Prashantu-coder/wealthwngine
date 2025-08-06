@@ -1,0 +1,353 @@
+/* --- Buy Calculator Styles --- */
+#buy-calculator-section {
+    background: #48c6d3;
+    border-radius: 10px;
+    padding: 2.5rem 2.5rem 2rem 2.5rem;
+    max-width: 900px;
+    margin: 3rem auto 2rem auto;
+    box-shadow: 0 6px 32px rgba(44, 0, 102, 0.10);
+}
+
+.buy-calc-grid {
+    display: grid;
+    grid-template-columns: 180px 140px 40px 200px 120px;
+    grid-template-rows: repeat(6, 2.5rem);
+    gap: 0.7rem 0.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.buy-calc-heading {
+    grid-column: 1 / 6;
+    text-align: center;
+    font-size: 1.35rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.buy-label {
+    font-weight: bold;
+    font-size: 1.08rem;
+    color: #000000;
+    margin-bottom: 0.5rem;
+}
+
+.buy-input {
+    width: 100%;
+    padding: 0.5rem 0.7rem;
+    border: 1.5px solid #222;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    background: #fff;
+    color: #222;
+    box-sizing: border-box;
+    margin-bottom: 0.2rem;
+}
+
+.buy-input:focus {
+    border-color: #1814ec;
+    outline: none;
+}
+
+.buy-calc-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2.2rem;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.buy-calc-inputs {
+    flex: 1 1 260px;
+    min-width: 220px;
+    max-width: 320px;
+    margin-right: 0;
+}
+.buy-results-table {
+    flex: 1 1 260px;
+    min-width: 220px;
+    max-width: 320px;
+    margin-left: 0;
+    margin-bottom: 1.2rem;
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.buy-results-table th,
+.buy-results-table td {
+    border: 1px solid #222;
+    padding: 0.7rem 0.7rem;
+    text-align: left;
+    font-size: 1.08rem;
+}
+
+.buy-results-table th {
+    background: #e0f7fa;
+    font-weight: bold;
+    color: #1a237e;
+}
+
+.buy-results-table td {
+    background: #fff;
+    color: #222;
+    font-weight: 500;
+}
+
+.buy-wacc-row {
+    display: flex;
+    margin-top: 1.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.buy-wacc-label {
+    font-weight: bold;
+    font-size: 1.08rem;
+    background: #e0f7fa;
+    border: 1px solid #222;
+    padding: 0.7rem 1.5rem;
+    border-radius: 4px 0 0 4px;
+}
+
+.buy-wacc-value {
+    background: #fff;
+    border: 1px solid #222;
+    border-left: none;
+    padding: 0.7rem 2.5rem;
+    font-size: 1.08rem;
+    font-weight: 500;
+    border-radius: 0 4px 4px 0;
+}
+
+.buy-calc-btn {
+    background: #2a7ae2;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.8rem 0;
+    font-size: 1.13rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    box-shadow: 0 1px 4px rgba(42, 122, 226, 0.08);
+}
+
+.buy-calc-btn:hover {
+    background: #185a9d;
+    color: #fff;
+}
+
+.calc-toggle-select {
+    font-size: 1.13rem;
+    font-weight: 600;
+    padding: 0.7rem 1.5rem;
+    border-radius: 7px;
+    border: 2px solid #2a7ae2;
+    background: #fff;
+    color: #222;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 4px rgba(42,122,226,0.08);
+    transition: border 0.18s, box-shadow 0.18s;
+    outline: none;
+}
+.calc-toggle-select:focus, .calc-toggle-select:hover {
+    border-color: #185a9d;
+    box-shadow: 0 0 0 2px #e0f7fa;
+}
+#calculator-toggle-container {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto 2rem auto;
+    display: flex;
+    justify-content: center;
+}
+
+#calculator-bg-container {
+    background: #48c6d3;
+    border-radius: 10px;
+    padding: 2.5rem 2.5rem 2rem 2.5rem;
+    max-width: 900px;
+    margin: 3rem auto 2rem auto;
+    box-shadow: 0 6px 32px rgba(44, 0, 102, 0.10);
+}
+
+/* Ensure both Buy and Sell calculators use the same styles */
+.buy-calc-flex, .sell-calc-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2.2rem;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.buy-calc-inputs, .sell-calc-inputs {
+    flex: 1 1 260px;
+    min-width: 220px;
+    max-width: 320px;
+    margin-right: 0;
+}
+.buy-results-table, .sell-results-table {
+    flex: 1 1 260px;
+    min-width: 220px;
+    max-width: 320px;
+    margin-left: 0;
+    margin-bottom: 1.2rem;
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.buy-label, .sell-label {
+    font-weight: bold;
+    font-size: 1.08rem;
+    color: #000000;
+    margin-bottom: 0.5rem;
+}
+.buy-input, .sell-input {
+    width: 100%;
+    padding: 0.5rem 0.7rem;
+    border: 1.5px solid #222;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    background: #fff;
+    color: #222;
+    box-sizing: border-box;
+    margin-bottom: 0.2rem;
+}
+.buy-input:focus, .sell-input:focus {
+    border-color: #1814ec;
+    outline: none;
+}
+.buy-calc-btn, .sell-calc-btn {
+    background: #2a7ae2;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.8rem 0;
+    font-size: 1.13rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    box-shadow: 0 1px 4px rgba(42, 122, 226, 0.08);
+}
+.buy-calc-btn:hover, .sell-calc-btn:hover {
+    background: #185a9d;
+    color: #fff;
+}
+.buy-results-table th, .sell-results-table th,
+.buy-results-table td, .sell-results-table td {
+    border: 1px solid #222;
+    padding: 0.7rem 0.7rem;
+    text-align: left;
+    font-size: 1.08rem;
+}
+.buy-results-table th, .sell-results-table th {
+    background: #e0f7fa;
+    font-weight: bold;
+    color: #1a237e;
+}
+.buy-results-table td, .sell-results-table td {
+    background: #fff;
+    color: #222;
+    font-weight: 500;
+}
+
+.manual-wacc {
+    background: #fff;
+    border: 1.5px solid #222;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    color: #222;
+    box-sizing: border-box;
+    margin-bottom: 0.2rem;
+    width: 100%;
+    padding: 0.5rem 0.7rem;
+}
+.input-error {
+    border-color: #e74c3c !important;
+    background: #fff0f0 !important;
+}
+
+#holdingInfo {
+    color: #fff !important;
+}
+
+.calc-header {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    border-radius: 8px 8px 0 0;
+    padding: 1.1rem 0 0.7rem 0;
+    letter-spacing: 1px;
+}
+.buy-header {
+    background: #2a7ae2;
+    color: #fff;
+}
+
+.buy-clear-btn {
+    background: #fff;
+    color: #2a7ae2;
+    border: 2px solid #2a7ae2;
+    border-radius: 5px;
+    padding: 0.8rem 0;
+    font-size: 1.13rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    box-shadow: 0 1px 4px rgba(42, 122, 226, 0.08);
+}
+.buy-clear-btn:hover {
+    background: #e0f7fa;
+}
+
+@media (max-width: 900px) {
+    #buy-calculator-section {
+        padding: 1.2rem 0.5rem;
+        max-width: 100vw;
+    }
+
+    .buy-calc-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: none;
+        gap: 0.7rem 0.5rem;
+    }
+
+    .buy-calc-flex, .sell-calc-flex {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: stretch;
+        max-width: 100%;
+    }
+    .buy-calc-inputs, .sell-calc-inputs, .buy-results-table, .sell-results-table {
+        max-width: 100%;
+        min-width: 0;
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .buy-wacc-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

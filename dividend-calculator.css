@@ -1,0 +1,152 @@
+#dividend-bg-container {
+    background: #48c6d3;
+    border-radius: 10px;
+    padding: 2.5rem 2.5rem 2rem 2.5rem;
+    max-width: 900px;
+    margin: 3rem auto 2rem auto;
+    box-shadow: 0 6px 32px rgba(44, 0, 102, 0.10);
+}
+.dividend-header {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    background: #2a7ae2;
+    border-radius: 8px 8px 0 0;
+    padding: 1.1rem 0 0.7rem 0;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+.dividend-underline {
+    width: 100%;
+    height: 4px;
+    background: #fff;
+    margin-bottom: 1.5rem;
+    border-radius: 2px;
+}
+.dividend-calc-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2.2rem;
+    width: 100%;
+    max-width: 700px;
+    margin: 10px 100px 10px 100px;
+}
+.dividend-calc-inputs {
+    flex: 1 1 260px;
+    min-width: 220px;
+    max-width: 320px;
+    margin-right: 0;
+}
+.dividend-label {
+    font-weight: bold;
+    font-size: 1.13rem;
+    color: #000000;
+    margin-bottom: 0.5rem;
+}
+.dividend-input {
+    width: 100%;
+    padding: 0.4rem 0.6rem;
+    border: 1.5px solid #222;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    background: #fff;
+    color: #222;
+    box-sizing: border-box;
+    margin-bottom: 0.2rem;
+}
+.dividend-input:focus {
+    border-color: #1814ec;
+    outline: none;
+}
+.dividend-btn-container {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.2rem;
+}
+.dividend-calc-btn {
+    background: #2a7ae2;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.8rem 0;
+    font-size: 1.13rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+    width: 100%;
+    box-shadow: 0 1px 4px rgba(42, 122, 226, 0.08);
+}
+.dividend-clear-btn {
+    background: #fff;
+    color: #2a7ae2;
+    border: 2px solid #2a7ae2;
+    border-radius: 5px;
+    padding: 0.8rem 0;
+    font-size: 1.13rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+    width: 100%;
+    box-shadow: 0 1px 4px rgba(42, 122, 226, 0.08);
+}
+.dividend-calc-btn:hover {
+    background: #185a9d;
+    color: #fff;
+}
+.dividend-clear-btn:hover {
+    background: #e0f7fa;
+}
+.dividend-results-card {
+    flex: 1 1 320px;
+    min-width: 220px;
+    max-width: 320px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(44,0,102,0.08);
+    padding: 1.2rem 1.2rem 1.2rem 1.2rem;
+    margin-left: 0;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dividend-results-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.dividend-results-table th, .dividend-results-table td {
+    border: 1px solid #222;
+    padding: 0.7rem 0.7rem;
+    text-align: left;
+    font-size: 1.08rem;
+}
+.dividend-results-table th {
+    background: #e0f7fa;
+    font-weight: bold;
+    color: #1a237e;
+}
+.dividend-results-table td {
+    background: #fff;
+    color: #222;
+    font-weight: 500;
+}
+@media (max-width: 900px) {
+    .dividend-calc-flex {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: stretch;
+        max-width: 100%;
+    }
+    .dividend-calc-inputs, .dividend-results-card {
+        max-width: 100%;
+        min-width: 0;
+        margin-right: 0;
+        margin-left: 0;
+    }
+} 

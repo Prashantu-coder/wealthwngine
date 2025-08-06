@@ -1,0 +1,125 @@
+.sip-header {
+    background: #7c3aed;
+    color: #fff;
+    border-radius: 12px 12px 0 0;
+    margin: 0 0 1.5rem 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 1.1rem 0 0.7rem 0;
+    letter-spacing: 1px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.sip-calc-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2.2rem;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.sip-form-panel {
+    flex: 1 1 260px;
+    min-width: 220px;
+    max-width: 320px;
+    margin-right: 0;
+}
+.sip-results-panel {
+    flex: 1 1 260px;
+    min-width: 220px;
+    max-width: 320px;
+}
+.sip-label {
+    font-weight: bold;
+    font-size: 1.08rem;
+    color: #000000;
+    margin-bottom: 0.5rem;
+}
+.sip-input, .sip-select {
+    width: 100%;
+    padding: 0.5rem 0.7rem;
+    border: 1.5px solid #222;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    background: #fff;
+    color: #222;
+    box-sizing: border-box;
+    margin-bottom: 0.2rem;
+}
+.sip-input:focus, .sip-select:focus {
+    border-color: #1814ec;
+    outline: none;
+}
+.sip-btn-container {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.2rem;
+}
+.sip-calc-btn {
+    background: #2a7ae2;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.8rem 0;
+    font-size: 1.13rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+    width: 100%;
+    box-shadow: 0 1px 4px rgba(42, 122, 226, 0.08);
+}
+.sip-calc-btn:hover {
+    background: #185a9d;
+    color: #fff;
+}
+.sip-results-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.sip-results-table th, .sip-results-table td {
+    border: 1px solid #222;
+    padding: 0.7rem 0.7rem;
+    text-align: left;
+    font-size: 1.08rem;
+}
+.sip-results-table th {
+    background: #e0f7fa;
+    font-weight: bold;
+    color: #1a237e;
+}
+.sip-results-table td {
+    background: #fff;
+    color: #222;
+    font-weight: 500;
+}
+@media (max-width: 900px) {
+    .sip-calc-flex {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: stretch;
+        max-width: 100%;
+    }
+    .sip-form-panel, .sip-results-panel {
+        max-width: 100%;
+        min-width: 0;
+        margin-right: 0;
+    }
+}
+body {
+    background: #f4f6fa;
+}
+.sip-bg-container {
+    background: #48c6d3;
+    border-radius: 12px;
+    padding: 0 0 2rem 0;
+    max-width: 900px;
+    margin: 3rem auto 2rem auto;
+    box-shadow: 0 6px 32px rgba(44,0,102,0.10);
+} 
